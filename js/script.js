@@ -1,54 +1,100 @@
-const slidesWrapper = document.querySelector('.slides-wrapper');
-const slides = document.querySelectorAll('.slide');
-const prevButton = document.querySelector('.prev-slide');
-const nextButton = document.querySelector('.next-slide');
+// Wait until the DOM is fully loaded before executing the script
+document.addEventListener("DOMContentLoaded", () => {
+    // === Grab Elements ===
+    const slidesWrapper = document.querySelector('.slides-wrapper'); // Container for all slides
+    const slides = document.querySelectorAll('.slide');              // Each individual slide
+    const prevButton = document.querySelector('.prev-slide');        // Left arrow button
+    const nextButton = document.querySelector('.next-slide');        // Right arrow button
+    const indicatorsContainer = document.querySelector('.slide-indicators'); // Dots container
+    const dots = indicatorsContainer.querySelectorAll('.dot');       // All dot elements
 
-let currentSlideIndex = 0;
-const totalSlides = slides.length;
+    // === State Management ===
+    let currentSlideIndex = 0;
+    const totalSlides = slides.length;
 
-function updateSlidePosition() {
-    const offset = -currentSlideIndex * 100;
-    slidesWrapper.style.transform = `translateX(${offset}%)`;
-}
+    // === Auto-slide Timer ===
+    let autoSlideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
 
+    // === Update Slide Position Function ===
+    function updateSlidePosition() {
+        const offset = -currentSlideIndex * 100;
+        slidesWrapper.style.transform = `translateX(${offset}%)`;
 
-nextButton.addEventListener('click', () => {
-    currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
-    updateSlidePosition();
-});
+        // Highlight active dot
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlideIndex);
+        });
+    }
 
-prevButton.addEventListener('click', () => {
-    currentSlideIndex = (currentSlideIndex - 1 + totalSlides) % totalSlides;
-    updateSlidePosition();
-});
-
-// Auto-slide every 5 seconds
-setInterval(() => {
-    currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
-    updateSlidePosition();
-}, 5000);
-
-//Dot Indicators
-const indicatorsContainer = document.querySelector('.slide-indicators');
-const dots = indicatorsContainer.querySelectorAll('.dot');
-
-function updateSlidePosition() {
-    const offset = -currentSlideIndex * 100;
-    slidesWrapper.style.transform = `translateX(${offset}%)`;
-
-    // Highlight the active dot
-    dots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === currentSlideIndex);
-    });
-}
-
-dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-        currentSlideIndex = index;
+    // === Slide Navigation Functions ===
+    function nextSlide() {
+        currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
         updateSlidePosition();
-        resetAutoSlideTimer(); // Optional: resets the timer when user clicks
+    }
+
+    function prevSlide() {
+        currentSlideIndex = (currentSlideIndex - 1 + totalSlides) % totalSlides;
+        updateSlidePosition();
+    }
+
+    // === Reset Auto-Slide Timer ===
+    function resetAutoSlideTimer() {
+        clearInterval(autoSlideInterval);
+        autoSlideInterval = setInterval(nextSlide, 5000);
+    }
+
+    // === Event Listeners ===
+    nextButton.addEventListener('click', () => {
+        nextSlide();
+        resetAutoSlideTimer();
     });
+
+    prevButton.addEventListener('click', () => {
+        prevSlide();
+        resetAutoSlideTimer();
+    });
+
+    // === Dots (Indicators) Click Handling ===
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentSlideIndex = index;
+            updateSlidePosition();
+            resetAutoSlideTimer();
+        });
+    });
+
+    // === Initial Setup ===
+    updateSlidePosition();
 });
 
+// Dark Mode Toggle
+const toggleBtn = document.querySelector('.theme-toggle');
+
+toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+
+    // Optionally store preference
+    const isDark = document.body.classList.contains('dark-mode');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+});
+
+// Apply theme on page load based on preference
+document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+    }
+})
 
 
+//Mobile Nav Toggle
+
+document.addEventListener("DOMContentLoaded", () => {
+    const navToggle = document.querySelector(".nav-toggle");
+    const headerContainer = document.querySelector(".header-container");
+
+    navToggle.addEventListener("click", () => {
+        const isOpen = headerContainer.classList.toggle("menu-open");
+        navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+});

@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!--Link To External Fonts-->
+
+    <!-- External Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
@@ -12,32 +13,59 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
 
     <title>Zenith Wellness Studio</title>
-    <!--External Stylesheets-->
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="./css/styles.css" />
     <link rel="stylesheet" href="./css/layout/hero.css" />
+    <link rel="stylesheet" href="./css/layout/header.css" />
 
-    <!-- Favicon & Manifest -->
+    <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-96x96.png" />
     <link rel="icon" type="image/png" sizes="192x192" href="favicon/web-app-manifest-192x192.png" />
     <link rel="icon" type="image/png" sizes="512x512" href="favicon/web-app-manifest-512x512.png" />
     <link rel="manifest" href="favicon/site.webmanifest" />
-    <link rel="icon" href="image/x-icon" href="./favicon/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="./favicon/favicon.ico" />
 </head>
-
 
 <body>
 
-    <header>
+    <header class="site-header" role="banner">
+        <div class="container header-container">
+            <a href="index.html" class="logo" aria-label="Zenith Wellness Studio Home">
+                <img src="./images/logo.svg" alt="Zenith Wellness Studio logo" />
+                <div class="brand">
+                    <span class="brand-name">Zenith Wellness Studio</span>
+                    <span class="brand-slogan">Elevate Your Inner Peace</span>
+                </div>
+            </a>
 
+            <nav class="main-nav" aria-label="Primary navigation">
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="classes.html">Classes</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+
+            <!-- Dark Mode Toggle -->
+            <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+                ☰
+            </button>
+        </div>
     </header>
-    <!-- Header will be added above this hero section -->
 
-    <!--Hero Section & Call To Action Buttons-->
+
+
+    <!-- Hero Section -->
     <section class="hero" role="region" aria-label="Featured Programs">
         <div class="slides-wrapper">
-
-
 
             <div class="slide">
                 <img src="./images/hero-yoga-outdoor.jpg" alt="Person practicing yoga outdoors" />
@@ -69,24 +97,19 @@
                 </div>
             </div>
 
-
-
         </div>
 
+        <!-- Slide Controls -->
         <button class="prev-slide" aria-label="Previous slide">←</button>
-
         <button class="next-slide" aria-label="Next slide">→</button>
 
-        <!-- Slide Indicators (dots) -->
+        <!-- Slide Indicators -->
         <div class="slide-indicators" aria-label="Slide navigation">
             <span class="dot active" aria-label="Slide 1"></span>
             <span class="dot" aria-label="Slide 2"></span>
             <span class="dot" aria-label="Slide 3"></span>
         </div>
-
     </section>
-
-
 
     <script src="./js/script.js"></script>
 </body>

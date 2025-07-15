@@ -8,8 +8,23 @@
    --color-orange: #f77f00;
    --color-yellow: #fcbf49;
    --color-cream: #eae2b7;
+
    --font-heading: 'Playfair Display', serif;
    --font-body: 'Inter', sans-serif;
+
+   /* Light mode */
+   --color-white: #ffffff;
+   --color-dark: #1a1a1a;
+   --bg-hero: #fdfdfd;
+   --text-primary: #333333;
+}
+
+body.dark-mode {
+   --color-white: #1a1a1a;
+   --color-dark: #fdfdfd;
+   --bg-hero: #121212;
+   --text-primary: #e0e0e0;
+   --color-orange: #ff7b00;
 }
 
 /* Typography */
@@ -34,4 +49,9 @@ body {
    background-color: white;
    color: #111;
    line-height: 1.6;
+}
+
+html,
+body {
+   overflow-x: hidden;
 }
