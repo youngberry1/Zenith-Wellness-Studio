@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
         rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/1f21adc434.js" crossorigin="anonymous"></script>
 
     <title>Zenith Wellness Studio</title>
 
@@ -18,8 +19,7 @@
     <link rel="stylesheet" href="./css/styles.css" />
     <link rel="stylesheet" href="./css/layout/hero.css" />
     <link rel="stylesheet" href="./css/layout/header.css" />
-
-    <!-- Favicon -->
+    <link rel="stylesheet" href="./css/layout/footer.css">
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-96x96.png" />
     <link rel="icon" type="image/png" sizes="192x192" href="favicon/web-app-manifest-192x192.png" />
@@ -50,7 +50,7 @@
                 </ul>
             </nav>
 
-
+            <div class="nav-backdrop" aria-hidden="true"></div>
             <!-- Dark Mode Toggle -->
             <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
 
@@ -111,6 +111,63 @@
         </div>
     </section>
 
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-column brand">
+                <img src="./images/logo.svg" alt="Zenith Wellness Studio Logo" class="footer-logo" />
+                <p class="footer-tagline">Elevate Your Inner Peace</p>
+            </div>
+
+            <div class="footer-column links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="classes.html">Classes</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column contact">
+                <h4>Contact</h4>
+                <p>123 Serenity Way<br />Accra, Ghana</p>
+                <p>Email: <a href="mailto:hello@zenithwellness.com">hello@zenithwellness.com</a></p>
+                <p>Phone: +233 24 000 0000</p>
+            </div>
+
+            <div class="footer-column newsletter">
+                <h4>Newsletter</h4>
+                <p>Subscribe to get the latest updates and wellness tips.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email" aria-label="Email address" required />
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-column social">
+            <h4>Follow Us</h4>
+            <div class="social-icons">
+                <a href="https://facebook.com/zenithwellness" target="_blank" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://twitter.com/zenithwellness" target="_blank" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://instagram.com/zenithwellness" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://youtube.com/zenithwellness" target="_blank" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Zenith Wellness Studio. All rights reserved.</p>
+        </div>
+    </footer>
     <script src="./js/script.js"></script>
 </body>
 

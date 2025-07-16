@@ -89,12 +89,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //Mobile Nav Toggle
 
-document.addEventListener("DOMContentLoaded", () => {
-    const navToggle = document.querySelector(".nav-toggle");
-    const headerContainer = document.querySelector(".header-container");
+const navToggle = document.querySelector(".nav-toggle");
+const header = document.querySelector(".header-container");
+const navLinks = document.querySelectorAll(".main-nav a");
+const backdrop = document.querySelector(".nav-backdrop");
 
-    navToggle.addEventListener("click", () => {
-        const isOpen = headerContainer.classList.toggle("menu-open");
-        navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+function toggleMenu(forceOpen = null) {
+    const isOpen = forceOpen !== null ? forceOpen : !header.classList.contains("menu-open");
+    header.classList.toggle("menu-open", isOpen);
+    navToggle.setAttribute("aria-expanded", isOpen);
+}
+
+navToggle.addEventListener("click", () => {
+    toggleMenu();
+});
+
+navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+        toggleMenu(false);
     });
+});
+
+backdrop.addEventListener("click", () => {
+    toggleMenu(false);
 });
